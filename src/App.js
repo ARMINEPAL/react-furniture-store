@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Items from "./components/Items";
 import Categories from "./components/Categories";
-import { current } from "@reduxjs/toolkit";
 import ShowFullItem from "./components/ShowFullItem";
 
 class App extends React.Component {
