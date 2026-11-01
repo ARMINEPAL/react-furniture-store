@@ -1,17 +1,36 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class Item extends Component {
-  render() {
-    return (
-      <div className='item'>
-        <img src={'./img/' + this.props.item.img} alt={this.props.item.title} onClick={() => this.props.onShowItem(this.props.item)}/>
-        <h2>{this.props.item.title}</h2>
-        <p>{this.props.item.description}</p>
-        <b>{this.props.item.price}</b>
-        <div className='add-to-cart' onClick={() => this.props.onAdd(this.props.item)}>+</div>
-      </div>
-    )
-  }
+export default function Item({ item, onAdd, onShowItem }) {
+  return (
+    <article className="item">
+      <button
+        type="button"
+        className="item-preview"
+        onClick={() => onShowItem(item)}
+        aria-label={`Подробнее о товаре ${item.title}`}
+      >
+        <img
+          src={'./img/' + item.img}
+          alt={item.title}
+          loading="lazy"
+        />
+      </button>
+
+      <h2>{item.title}</h2>
+
+      <p>{item.desc}</p>
+
+      <b>{item.price}</b>
+
+      <button
+        type="button"
+        className="add-to-cart"
+        onClick={() => onAdd(item)}
+        aria-label={`Добавить ${item.title} в корзину`}
+        title="Добавить в корзину"
+      >
+        +
+      </button>
+    </article>
+  )
 }
-
-export default Item
